@@ -1,0 +1,565 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Danil-Kabanov/Google-colabs/blob/main/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0%200.5.0\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "ФИО:"
+      ],
+      "metadata": {
+        "id": "Bu5gIJfHNPHw"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "CbHI8c7cM9Eg"
+      },
+      "outputs": [],
+      "source": [
+        "Кабанов Данил Алексеевич"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 1**"
+      ],
+      "metadata": {
+        "id": "VrNrBpmocGRd"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "\n",
+        "Дан словарь, содержащий имена и возраст людей, напишите программу выводящую возраст человека по имени\n",
+        "\n",
+        "Дано:\n",
+        "\n",
+        "```\n",
+        "{\"Alice\": 25, \"Bob\": 30, \"Charlie\": 35}\n",
+        "```\n",
+        "\n",
+        "Вввод:\n",
+        "\n",
+        "\n",
+        "```\n",
+        "Alice\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "\n",
+        "\n",
+        "```\n",
+        "Alice 25\n",
+        "```\n"
+      ],
+      "metadata": {
+        "id": "XhV1bnm1bR2h"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "my_dict = {\"Alice\": 25, \"Bob\": 30, \"Charlie\": 35}\n",
+        "name = input('Введите имя: ')\n",
+        "if name in my_dict.keys():\n",
+        "    print(name, my_dict[name])\n",
+        "else:\n",
+        "  print('Такого имени нет в базе данный')"
+      ],
+      "metadata": {
+        "id": "9T0nNFCEbpaF",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "6e29d97d-bcff-46e0-de90-163fc93cc035"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Введите имя: Alice\n",
+            "Alice 25\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "PElJj6DvsgjD"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 2**\n"
+      ],
+      "metadata": {
+        "id": "lpjJz-_YcJ-t"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "\n",
+        "Дан список, состоящий из целых чисел, необходимо написать функцию считающую сумму всех положительных четных чисел списка\n",
+        "\n",
+        "Ввод:\n",
+        "\n",
+        "```\n",
+        "1, 2, 3, 4, 5, 6, 7, 8, 9\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "\n",
+        "\n",
+        "```\n",
+        "20\n",
+        "```\n",
+        "\n",
+        "***Запрещено:***\n",
+        "\n",
+        "*   Использование готовых функций для суммирования чисел\n"
+      ],
+      "metadata": {
+        "id": "tMEsAB4rUiWW"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def f(a):\n",
+        "    summa = 0\n",
+        "    for i in a:\n",
+        "        if i % 2 == 0 and i > 0:\n",
+        "            summa += i\n",
+        "    return summa\n",
+        "a = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n",
+        "print(f(a))"
+      ],
+      "metadata": {
+        "id": "wDNUFLeqNQS_",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "acafaf57-0c1e-4140-afd5-af4712cb2be7"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "20\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 3**"
+      ],
+      "metadata": {
+        "id": "WT_v-vz1dUZJ"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Дан словарь, содержащий название фрукта и его цвет, выведите список всех желтых фруктов\n",
+        "\n",
+        "\n",
+        "Дано:\n",
+        "\n",
+        "```\n",
+        "fruits_and_colors = {\n",
+        "    \"apple\": \"red\",\n",
+        "    \"banana\": \"yellow\",\n",
+        "    \"mango\": \"yellow\",\n",
+        "    \"orange\": \"orange\",\n",
+        "    \"lemon\": \"yellow\",\n",
+        "    \"grape\": \"purple\"\n",
+        "}\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "\n",
+        "\n",
+        "```\n",
+        "Yellow fruits:\n",
+        "banana\n",
+        "lemon\n",
+        "mango\n",
+        "```\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "ZI5Xeh2DdXgF"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "fruits_and_colors = {\n",
+        "    \"apple\": \"red\",\n",
+        "    \"banana\": \"yellow\",\n",
+        "    \"mango\": \"yellow\",\n",
+        "    \"orange\": \"orange\",\n",
+        "    \"lemon\": \"yellow\",\n",
+        "    \"grape\": \"purple\"\n",
+        "}\n",
+        "for k, v in fruits_and_colors.items():\n",
+        "    if v == 'yellow':\n",
+        "        print(k)"
+      ],
+      "metadata": {
+        "id": "aNzFTkhKdkTG",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "87db7591-f00f-4772-e920-6273131fc6da"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "banana\n",
+            "mango\n",
+            "lemon\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 4**\n"
+      ],
+      "metadata": {
+        "id": "iHtMGt2icM7w"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "\n",
+        "Дан словарь, необходимо написать функцию меняющую ключ и значение местами\n",
+        "\n",
+        "Дано:\n",
+        "\n",
+        "\n",
+        "```\n",
+        "{\"a\": 1, \"b\": 2, \"c\": 3}\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "\n",
+        "```\n",
+        "{1: 'a', 2: 'b', 3: 'c'}\n",
+        "```\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "rS3THsnBQ_EB"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "my_dict = {\"a\": 1, \"b\": 2, \"c\": 3}\n",
+        "new_dict = {}\n",
+        "for k, v in my_dict.items():\n",
+        "    new_dict[v] = k\n",
+        "print(new_dict)"
+      ],
+      "metadata": {
+        "id": "MNRusyLDcQ59",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "dd928a72-31fa-4870-eb32-0f0cfe1a2194"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{1: 'a', 2: 'b', 3: 'c'}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 5**"
+      ],
+      "metadata": {
+        "id": "x6ff5nd0cUxD"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Дан список слов, неограниченной длинны, сформируйте словарь, где в качестве ключа будет слово, а в качестве значения количество символов\n",
+        "\n",
+        "**Критерии**\n",
+        "\n",
+        "\n",
+        "*   Словарь необходимо отсортировать по убыванию количества элементов в списке.\n",
+        "*   Подсчет элементов должен быть реализован в отдельной функции\n",
+        "*   Сортировка пары `ключ:значение` должна быть реализована также в виде отдельной функции\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "Дано:\n",
+        "```\n",
+        "['apple','banana','orange','apple','apple','banana']\n",
+        "```\n",
+        "\n",
+        "\n",
+        "Вывод:\n",
+        "```\n",
+        "{'apple':3, 'banana': 2, 'orange': 1}\n",
+        "```\n",
+        "\n",
+        "***Запрещено:***\n",
+        "\n",
+        "*   Использование готовых функций для сортировки\n",
+        "*   Использование готовых функций для подсчета элементов\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "ypQNHOG4NQz3"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def s(md):\n",
+        "    count = {}\n",
+        "    for e1 in md:\n",
+        "        if e1 in count.keys():\n",
+        "            count[e1] += 1\n",
+        "        else:\n",
+        "            count[e1] = 1\n",
+        "    return count\n",
+        "def sort_dict_by_value(d):\n",
+        "    sorted_dict = {}\n",
+        "    while d != {}:\n",
+        "        max_key = max(d, key = d.get)\n",
+        "        sorted_dict[max_key] = d[max_key]\n",
+        "        del d[max_key]\n",
+        "    return sorted_dict\n",
+        "my_dict = ['apple', 'banana', 'orange','apple','apple','banana']\n",
+        "count_dict = s(my_dict)\n",
+        "print(sort_dict_by_value(count_dict))"
+      ],
+      "metadata": {
+        "id": "J10PjdVQUbyq",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "d007b7cf-280f-4f2c-dcb1-af3a3f0b8970"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'apple': 3, 'banana': 2, 'orange': 1}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 6**"
+      ],
+      "metadata": {
+        "id": "d7fDUr2WcY_G"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Дан словарь, содержащий информацию о людях, необходимо:\n",
+        "\n",
+        "\n",
+        "\n",
+        "*   Вывести всех людей старше 30 лет\n",
+        "*   Вывести список городов и количество людей из словаря проживающих в них\n",
+        "*   Вывести список профессий и список людей для каждой профессии\n",
+        "\n",
+        "**Критерии**\n",
+        "\n",
+        "Каждый из пунктов необходимо реализовать в виде функции\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "m11qdVhSWBi7"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "people_info = {\n",
+        "    \"Alice\": {\"age\": 25, \"city\": \"New York\", \"occupation\": \"Engineer\"},\n",
+        "    \"Bob\": {\"age\": 30, \"city\": \"Los Angeles\", \"occupation\": \"Designer\"},\n",
+        "    \"Charlie\": {\"age\": 35, \"city\": \"Chicago\", \"occupation\": \"Teacher\"},\n",
+        "    \"Diana\": {\"age\": 28, \"city\": \"Miami\", \"occupation\": \"Doctor\"},\n",
+        "    \"Ethan\": {\"age\": 40, \"city\": \"Seattle\", \"occupation\": \"Chef\"},\n",
+        "    \"Frank\": {\"age\": 32, \"city\": \"Atlanta\", \"occupation\": \"Lawyer\"},\n",
+        "    \"Gabriella\": {\"age\": 29, \"city\": \"San Francisco\", \"occupation\": \"Software Engineer\"},\n",
+        "    \"Harrison\": {\"age\": 38, \"city\": \"Denver\", \"occupation\": \"Architect\"},\n",
+        "    \"Isabella\": {\"age\": 26, \"city\": \"Washington D.C.\", \"occupation\": \"Journalist\"},\n",
+        "    \"Julian\": {\"age\": 42, \"city\": \"Miami\", \"occupation\": \"Musician\"},\n",
+        "    \"Kate\": {\"age\": 31, \"city\": \"Philadelphia\", \"occupation\": \"Nurse\"},\n",
+        "    \"Lucas\": {\"age\": 36, \"city\": \"Nashville\", \"occupation\": \"Businessman\"},\n",
+        "    \"Mia\": {\"age\": 27, \"city\": \"Atlanta\", \"occupation\": \"Artist\"},\n",
+        "    \"Natalie\": {\"age\": 39, \"city\": \"Portland\", \"occupation\": \"Writer\"},\n",
+        "    \"Oliver\": {\"age\": 44, \"city\": \"Minneapolis\", \"occupation\": \"Professor\"},\n",
+        "    \"Penelope\": {\"age\": 33, \"city\": \"San Diego\", \"occupation\": \"Marketing Manager\"},\n",
+        "    \"Quincy\": {\"age\": 41, \"city\": \"Nashville\", \"occupation\": \"Singer\"},\n",
+        "    \"Rachel\": {\"age\": 34, \"city\": \"Cleveland\", \"occupation\": \"Teacher\"},\n",
+        "    \"Sophia\": {\"age\": 29, \"city\": \"Nashville\", \"occupation\": \"Engineer\"},\n",
+        "    \"Tessa\": {\"age\": 37, \"city\": \"Miami\", \"occupation\": \"Lawyer\"}\n",
+        "}\n",
+        "count = 0\n",
+        "for k in people_info.keys():\n",
+        "    if people_info[k]['age'] > 30:\n",
+        "        count += 1\n",
+        "print(count)"
+      ],
+      "metadata": {
+        "id": "lSNtB39OWtFl",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "becb6842-bc78-4276-8314-ae23a685c75d"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "13\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "qcLO5eQwXkNK"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Задание 7**"
+      ],
+      "metadata": {
+        "id": "27IuB2YScezw"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Задание: Разработка системы отзывов о предметах\n",
+        "\n",
+        "Описание: Создать программу на Python для хранения и управления отзывами о предметах учебного курса. Программа должна позволять пользователям добавлять, просматривать и удалять отзывы, а также вычислять средний балл по заданному предмету.\n",
+        "\n",
+        "**Функционал:**\n",
+        "\n",
+        "*   Добавление отзыва и оценки:\n",
+        "   *   Пользователь может ввести название предмета, оценку (от 1 до 5) и текст отзыва.\n",
+        "   *   Отзывы должны храниться в структуре данных (например, словаре), где ключом будет название предмета, а значением - список отзывов (каждый отзыв может хранить оценку и комментарий).\n",
+        "*   Просмотр отзывов и оценок:\n",
+        "   *   Пользователь может запросить отзывы для указанного предмета.\n",
+        "   *   Если для указанного предмета есть отзывы, программа должна отобразить список всех отзывов и соответствующих оценок.\n",
+        "*   Удаление отзыва:\n",
+        "   *   Пользователь может удалить отзыв по индексу. Необходимо заранее уведомить пользователя о том, какие отзывы доступны для удаления.\n",
+        "   *   Программа должна обработать ситуацию, когда индекс введен неправильно.\n",
+        "*   Вычисление среднего балла по предмету:\n",
+        "   *   Пользователь может ввести название предмета, и программа должна вычислить и вывести средний балл по всем отзывам для этого предмета.\n",
+        "   *   Если отзывов нет, программа должна сообщить об этом.\n",
+        "\n",
+        "\n",
+        "**Критерии:**\n",
+        "\n",
+        "*   Код должен быть оформлен в виде функций\n",
+        "*   Необходимо обрабатывать неправильный ввод пользователя\n",
+        "*   Должны быть комментарии к функциям\n",
+        "*   Присутсвует весь дополнительный функционал\n",
+        "\n",
+        "\n",
+        "\n",
+        "**Опционально:**\n",
+        "\n",
+        "Предлагаю вам добавить свои критерии оценки или вопросы, на которые должен ответить студент, чтобы оценить пару\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "Fd95-S9cYhct"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "kzucJrCUa0o7"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
