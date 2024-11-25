@@ -1,0 +1,443 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "collapsed_sections": [
+        "ra45s33wUt-C",
+        "ia9UtA0cU1Iy",
+        "eecUb-akU1ji",
+        "QGrsZrv5U1s8"
+      ],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Danil-Kabanov/Google-colabs/blob/main/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0%200.8.0\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 1"
+      ],
+      "metadata": {
+        "id": "ra45s33wUt-C"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Задача: Создать чат бота для получения информации об исследованиях космоса\n",
+        "\n",
+        "Описание: Создайте комплексное приложение командной строки, которое будет использоваться в качестве панели управления исследованиями космоса. Данное приложение будет обращаться к https://api.nasa.gov/ для предоставления пользователям набора информации о космосе, включая:\n",
+        "\n",
+        "- Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\n",
+        "- Фотографии с марсохода: позволяет пользователям выбирать и фильтровать фотографии с марсохода по дате и типу камеры.\n",
+        "- Объекты, сближающиеся с Землей (ОСЗ): Поиск и отображение информации об объекте, сближающихся с Землей, на определенную дату, включая их размеры и потенциальную опасность.\n",
+        "- Данные о космической погоде: Отображают последние данные о космической погоде, включая солнечные вспышки и геомагнитные бури.\n",
+        "Приложение должно позволять пользователям ориентироваться в этих функциях, корректно обрабатывать ошибки и обеспечивать удобство работы.\n",
+        "\n",
+        "Требования:\n",
+        "- Пользовательский ввод: Приложение должно предложить пользователю ввести данные, чтобы выбрать, какую функцию он хочет изучить.\n",
+        "- Проверка данных: Убедитесь, что пользовательские данные (например, даты) проверены.\n",
+        "- Обработка ошибок: Корректно обрабатывайте ошибки API и неверные ответы.\n",
+        "- Представление данных: Представляйте данные в четкой и организованной форме.\n",
+        "- Опция выхода: позволяет пользователям выходить из приложения в любое время."
+      ],
+      "metadata": {
+        "id": "G56D5mNCUwp5"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "wGeJM9n4UqUD",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "563eb5d1-7713-49a0-cf1b-6a965b1c1481"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Выберите номер фукнции:\n",
+            "0. Выход\n",
+            "1. Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\n",
+            "2. Поиск фотографии с марсохода по дате и типу камеры.\n",
+            "3. Поиск объектов, сближающиеся с Землёй.\n",
+            "4. Отображение последних данных о космической погоде, включая солнечные вспышки и геомагнитные бури.\n",
+            "Ваш ответ: 1\n",
+            "Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\n",
+            "https://apod.nasa.gov/apod/image/2411/Ldn1355HelpingHandFR2048.png Helping Hand in CassiopeiaDrifting near the plane of our Milky Way galaxy these dusty molecular clouds seem to extend a helping hand on a cosmic scale. Part of a local complex of star-forming interstellar clouds they include LDN 1358, 1357, and 1355 from American astronomer Beverly Lynds' 1962 Catalog of Dark Nebulae. Presenting a challenging target for astro-imagers, the obscuring dark nebulae are nearly 3,000 light-years away, toward rich starfields in the northern constellation Cassiopeia. At that distance, this deep, telescopic field of view would span about 80 light-years.2024-11-08\n",
+            "\n",
+            "Выберите номер фукнции:\n",
+            "0. Выход\n",
+            "1. Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\n",
+            "2. Поиск фотографии с марсохода по дате и типу камеры.\n",
+            "3. Поиск объектов, сближающиеся с Землёй.\n",
+            "4. Отображение последних данных о космической погоде, включая солнечные вспышки и геомагнитные бури.\n",
+            "Ваш ответ: 4\n",
+            "Солнечная вспышка [{'flrID': '2024-10-09T01:25:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-09T01:25Z', 'peakTime': '2024-10-09T01:56Z', 'endTime': '2024-10-09T02:43Z', 'classType': 'X1.8', 'sourceLocation': 'N13W08', 'activeRegionNum': 13848, 'note': 'Simultaneous flaring from a region near N21E62.', 'submissionTime': '2024-10-09T11:04Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33863/-1', 'linkedEvents': [{'activityID': '2024-10-09T02:12:00-CME-001'}, {'activityID': '2024-10-09T03:50:00-SEP-001'}, {'activityID': '2024-10-09T05:05:00-SEP-001'}, {'activityID': '2024-10-09T06:01:00-SEP-001'}, {'activityID': '2024-10-09T06:01:00-SEP-002'}, {'activityID': '2024-10-09T08:55:00-SEP-001'}]}, {'flrID': '2024-10-09T05:41:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-09T05:41Z', 'peakTime': '2024-10-09T05:46Z', 'endTime': '2024-10-09T06:02Z', 'classType': 'M1.6', 'sourceLocation': 'S08E09', 'activeRegionNum': 13849, 'note': '', 'submissionTime': '2024-10-12T16:33Z', 'versionId': 4, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33872/-1', 'linkedEvents': None}, {'flrID': '2024-10-09T15:44:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-09T15:44Z', 'peakTime': '2024-10-09T15:47Z', 'endTime': '2024-10-09T15:53Z', 'classType': 'X1.4', 'sourceLocation': 'S11W85', 'activeRegionNum': 13842, 'note': '', 'submissionTime': '2024-10-12T16:32Z', 'versionId': 6, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33885/-1', 'linkedEvents': [{'activityID': '2024-10-09T16:12:00-CME-001'}]}, {'flrID': '2024-10-09T22:59:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-09T22:59Z', 'peakTime': '2024-10-09T23:12Z', 'endTime': '2024-10-09T23:21Z', 'classType': 'M7.7', 'sourceLocation': 'S16W90', 'activeRegionNum': 13842, 'note': '', 'submissionTime': '2024-10-09T23:37Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33897/-1', 'linkedEvents': None}, {'flrID': '2024-10-10T11:47:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-10T11:47Z', 'peakTime': '2024-10-10T12:01Z', 'endTime': '2024-10-10T12:10Z', 'classType': 'M1.3', 'sourceLocation': 'S11W90', 'activeRegionNum': 13842, 'note': '', 'submissionTime': '2024-10-10T13:00Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33904/-1', 'linkedEvents': None}, {'flrID': '2024-10-10T12:10:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-10T12:10Z', 'peakTime': '2024-10-10T12:19Z', 'endTime': '2024-10-10T12:22Z', 'classType': 'M1.1', 'sourceLocation': 'S13E33', 'activeRegionNum': 13852, 'note': 'First of a double peaked flare from AR 3852, second peak of M1.2 at 2024-10-10T12:19Z.', 'submissionTime': '2024-10-10T13:17Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33905/-1', 'linkedEvents': None}, {'flrID': '2024-10-10T12:22:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-10T12:22Z', 'peakTime': '2024-10-10T12:25Z', 'endTime': '2024-10-10T12:28Z', 'classType': 'M1.2', 'sourceLocation': 'S13E33', 'activeRegionNum': 13852, 'note': 'Second of a double peaked flare from AR 3852, first peak of M1.1 at 2024-10-10T12:25Z. Flare end time manually calculated from timeline inspection.', 'submissionTime': '2024-10-10T13:18Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33906/-1', 'linkedEvents': None}, {'flrID': '2024-10-10T16:51:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-10T16:51Z', 'peakTime': '2024-10-10T17:00Z', 'endTime': '2024-10-10T17:12Z', 'classType': 'M1.0', 'sourceLocation': 'S08W90', 'activeRegionNum': 13842, 'note': '', 'submissionTime': '2024-10-10T17:16Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33912/-1', 'linkedEvents': None}, {'flrID': '2024-10-10T21:54:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-10T21:54Z', 'peakTime': '2024-10-10T22:30Z', 'endTime': '2024-10-10T23:10Z', 'classType': 'M3.0', 'sourceLocation': 'S15W99', 'activeRegionNum': 13842, 'note': '', 'submissionTime': '2024-10-11T02:55Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33924/-1', 'linkedEvents': None}, {'flrID': '2024-10-11T15:48:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-11T15:48Z', 'peakTime': '2024-10-11T16:04Z', 'endTime': '2024-10-11T16:07Z', 'classType': 'M1.4', 'sourceLocation': 'S08E23', 'activeRegionNum': 13852, 'note': 'This flare occurs between Active Regions 3852(S10E17) and 3854(S05E25), but seems more magnetically connected to AR3852', 'submissionTime': '2024-10-11T16:23Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33934/-1', 'linkedEvents': None}, {'flrID': '2024-10-11T16:07:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-11T16:07Z', 'peakTime': '2024-10-11T16:33Z', 'endTime': '2024-10-11T16:46Z', 'classType': 'M2.1', 'sourceLocation': 'S09E23', 'activeRegionNum': 13852, 'note': 'This flare is the second peak of a long duration flare beginning at 2024-10-11T15:48Z, first peaking at M1.4 before dipping and later rising to M2.1', 'submissionTime': '2024-10-11T16:58Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33941/-1', 'linkedEvents': [{'activityID': '2024-10-11T17:38:00-CME-001'}]}, {'flrID': '2024-10-11T22:50:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-11T22:50Z', 'peakTime': '2024-10-11T23:25Z', 'endTime': '2024-10-11T23:34Z', 'classType': 'M1.0', 'sourceLocation': 'S13W90', 'activeRegionNum': 13842, 'note': 'Long duration solar flare which likely originates from Active Region 13842 beyond the western limb.', 'submissionTime': '2024-10-12T01:27Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33954/-1', 'linkedEvents': None}, {'flrID': '2024-10-14T00:04:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-14T00:04Z', 'peakTime': '2024-10-14T00:17Z', 'endTime': '2024-10-14T00:31Z', 'classType': 'M3.4', 'sourceLocation': 'N17W78', 'activeRegionNum': 13848, 'note': '', 'submissionTime': '2024-10-14T01:35Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33976/-1', 'linkedEvents': [{'activityID': '2024-10-14T00:48:00-CME-001'}]}, {'flrID': '2024-10-14T13:22:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-14T13:22Z', 'peakTime': '2024-10-14T13:37Z', 'endTime': '2024-10-14T13:50Z', 'classType': 'M1.8', 'sourceLocation': 'N17W86', 'activeRegionNum': 13848, 'note': '', 'submissionTime': '2024-10-14T14:40Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/33986/-1', 'linkedEvents': [{'activityID': '2024-10-14T14:36:00-CME-001'}]}, {'flrID': '2024-10-15T02:02:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-15T02:02Z', 'peakTime': '2024-10-15T02:13Z', 'endTime': '2024-10-15T02:23Z', 'classType': 'M1.9', 'sourceLocation': 'S07W25', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-15T11:41Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34003/-1', 'linkedEvents': None}, {'flrID': '2024-10-15T02:23:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-15T02:23Z', 'peakTime': '2024-10-15T02:27Z', 'endTime': '2024-10-15T02:31Z', 'classType': 'M1.1', 'sourceLocation': 'S09W25', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-15T11:42Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34004/-1', 'linkedEvents': None}, {'flrID': '2024-10-15T10:00:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-15T10:00Z', 'peakTime': '2024-10-15T10:06Z', 'endTime': '2024-10-15T10:10Z', 'classType': 'M1.3', 'sourceLocation': 'S09W30', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-15T11:38Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34002/-1', 'linkedEvents': None}, {'flrID': '2024-10-15T18:00:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-15T18:00Z', 'peakTime': '2024-10-15T18:18Z', 'endTime': '2024-10-15T18:28Z', 'classType': 'M1.7', 'sourceLocation': 'N19W90', 'activeRegionNum': 13848, 'note': '', 'submissionTime': '2024-10-15T18:36Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34007/-1', 'linkedEvents': [{'activityID': '2024-10-15T22:06:00-CME-001'}]}, {'flrID': '2024-10-15T18:28:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-15T18:28Z', 'peakTime': '2024-10-15T18:33Z', 'endTime': '2024-10-15T18:38Z', 'classType': 'M2.1', 'sourceLocation': 'S05W35', 'activeRegionNum': 13854, 'note': 'This flare directly follows the M1.7-class flare from AR 13848 peaking at 2024-10-15T18:18Z.', 'submissionTime': '2024-10-15T18:45Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34008/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T03:12:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T03:12Z', 'peakTime': '2024-10-16T03:19Z', 'endTime': '2024-10-16T03:21Z', 'classType': 'M3.0', 'sourceLocation': 'S05W38', 'activeRegionNum': 13854, 'note': \"First of four back-to-back peaks from AR 3854/3852, each distinct in SDO AIA 131. This peak is clearly from AR 3854 directly preceeding an M3.7 from AR 3852 peaking at 2024-10-16T03:23Z. End time chosen manually due to the following M3.7 flare's start time cutting off this flare's decay in the timeline.\", 'submissionTime': '2024-10-16T13:05Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34020/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T03:21:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T03:21Z', 'peakTime': '2024-10-16T03:23Z', 'endTime': '2024-10-16T03:26Z', 'classType': 'M3.7', 'sourceLocation': 'S08W38', 'activeRegionNum': 13852, 'note': 'Second of four back-to-back peaks from AR 3854/3852, each distinct in SDO AIA 131. This peak is clearly from AR 3852 directly following an M3.0 peak from AR 3842 peaking at 2024-10-16T03:19Z. End time manually calculated here via timeline inspection.', 'submissionTime': '2024-10-16T13:07Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34021/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T03:28:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T03:28Z', 'peakTime': '2024-10-16T03:31Z', 'endTime': '2024-10-16T03:35Z', 'classType': 'M2.2', 'sourceLocation': 'S10W40', 'activeRegionNum': 13852, 'note': 'Third of four back-to-back peaks from AR 3854/3852, each distinct in SDO AIA 131. This peak follows the M3.7 from AR 3852, both observed as a separate more SW brightening and with a start time just barely after the M3.7 reached its end time. End time manually calculated here via timeline inspection.', 'submissionTime': '2024-10-16T13:07Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34022/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T03:38:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T03:38Z', 'peakTime': '2024-10-16T03:46Z', 'endTime': '2024-10-16T03:59Z', 'classType': 'M3.7', 'sourceLocation': 'S06W37', 'activeRegionNum': 13854, 'note': 'Fourth of four back-to-back peaks from AR 3854/3852, each distinct in SDO AIA 131. This peak is clearly from AR 3854 via separate brightening in SDO AIA 131.', 'submissionTime': '2024-10-16T13:15Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34023/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T04:57:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T04:57Z', 'peakTime': '2024-10-16T05:15Z', 'endTime': '2024-10-16T05:29Z', 'classType': 'M2.8', 'sourceLocation': 'S08W37', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-16T11:45Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34019/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T13:12:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T13:12Z', 'peakTime': '2024-10-16T13:27Z', 'endTime': '2024-10-16T13:38Z', 'classType': 'M1.5', 'sourceLocation': 'S10W45', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-16T13:43Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34024/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T14:29:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T14:29Z', 'peakTime': '2024-10-16T14:42Z', 'endTime': '2024-10-16T14:51Z', 'classType': 'M1.3', 'sourceLocation': 'S09W44', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-16T15:21Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34025/-1', 'linkedEvents': None}, {'flrID': '2024-10-16T14:51:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-16T14:51Z', 'peakTime': '2024-10-16T15:00Z', 'endTime': '2024-10-16T15:04Z', 'classType': 'M1.3', 'sourceLocation': 'S07W43', 'activeRegionNum': 13852, 'note': '', 'submissionTime': '2024-10-16T15:31Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34026/-1', 'linkedEvents': None}, {'flrID': '2024-10-17T02:12:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-17T02:12Z', 'peakTime': '2024-10-17T02:22Z', 'endTime': '2024-10-17T02:38Z', 'classType': 'M1.0', 'sourceLocation': 'N10W09', 'activeRegionNum': 13856, 'note': '', 'submissionTime': '2024-10-17T02:42Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34041/-1', 'linkedEvents': None}, {'flrID': '2024-10-17T04:53:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-17T04:53Z', 'peakTime': '2024-10-17T05:05Z', 'endTime': '2024-10-17T05:13Z', 'classType': 'M2.4', 'sourceLocation': 'S04W55', 'activeRegionNum': 13854, 'note': '', 'submissionTime': '2024-10-17T11:28Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34042/-1', 'linkedEvents': None}, {'flrID': '2024-10-18T17:28:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-18T17:28Z', 'peakTime': '2024-10-18T17:36Z', 'endTime': '2024-10-18T17:41Z', 'classType': 'M1.1', 'sourceLocation': 'S03W76', 'activeRegionNum': 13854, 'note': 'The flare location is to the west of Active Region 4859.', 'submissionTime': '2024-10-18T17:52Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34069/-1', 'linkedEvents': None}, {'flrID': '2024-10-18T19:27:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-18T19:27Z', 'peakTime': '2024-10-18T19:38Z', 'endTime': '2024-10-18T19:43Z', 'classType': 'M4.8', 'sourceLocation': 'S04W80', 'activeRegionNum': 13854, 'note': '', 'submissionTime': '2024-10-18T19:50Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34073/-1', 'linkedEvents': None}, {'flrID': '2024-10-18T23:13:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-18T23:13Z', 'peakTime': '2024-10-18T23:28Z', 'endTime': '2024-10-18T23:38Z', 'classType': 'M4.7', 'sourceLocation': 'S04W80', 'activeRegionNum': 13854, 'note': 'Some simultaneous brightening from AR 3856 (N10W35).', 'submissionTime': '2024-10-18T23:46Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34075/-1', 'linkedEvents': None}, {'flrID': '2024-10-19T06:48:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-19T06:48Z', 'peakTime': '2024-10-19T06:56Z', 'endTime': '2024-10-19T07:03Z', 'classType': 'M6.5', 'sourceLocation': 'S03W82', 'activeRegionNum': 13854, 'note': '', 'submissionTime': '2024-10-19T12:07Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34076/-1', 'linkedEvents': [{'activityID': '2024-10-19T07:12:00-CME-001'}]}, {'flrID': '2024-10-19T14:27:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-19T14:27Z', 'peakTime': '2024-10-19T14:34Z', 'endTime': '2024-10-19T14:40Z', 'classType': 'M1.7', 'sourceLocation': 'S04W85', 'activeRegionNum': 13854, 'note': '', 'submissionTime': '2024-10-19T15:12Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34079/-1', 'linkedEvents': None}, {'flrID': '2024-10-21T09:01:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-21T09:01Z', 'peakTime': '2024-10-21T10:00Z', 'endTime': '2024-10-21T11:12Z', 'classType': 'C6.2', 'sourceLocation': 'S20E90', 'activeRegionNum': None, 'note': 'Long duration flare associated with eruptive activity on southeastern limb.', 'submissionTime': '2024-10-21T17:40Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34105/-1', 'linkedEvents': [{'activityID': '2024-10-21T09:24:00-CME-001'}]}, {'flrID': '2024-10-24T03:30:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-24T03:30Z', 'peakTime': '2024-10-24T03:57Z', 'endTime': '2024-10-24T04:28Z', 'classType': 'X3.3', 'sourceLocation': 'S17E68', 'activeRegionNum': 13869, 'note': '', 'submissionTime': '2024-10-24T11:03Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34148/-1', 'linkedEvents': [{'activityID': '2024-10-24T03:48:00-CME-001'}, {'activityID': '2024-10-26T18:57:00-SEP-001'}, {'activityID': '2024-10-26T19:02:00-SEP-001'}]}, {'flrID': '2024-10-24T10:22:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-24T10:22Z', 'peakTime': '2024-10-24T10:29Z', 'endTime': '2024-10-24T10:34Z', 'classType': 'M1.2', 'sourceLocation': 'S17E90', 'activeRegionNum': 13869, 'note': '', 'submissionTime': '2024-10-24T11:10Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34151/-1', 'linkedEvents': None}, {'flrID': '2024-10-25T07:23:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-25T07:23Z', 'peakTime': '2024-10-25T07:33Z', 'endTime': '2024-10-25T07:38Z', 'classType': 'M1.1', 'sourceLocation': 'S10E72', 'activeRegionNum': 13873, 'note': '', 'submissionTime': '2024-10-25T11:09Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34178/-1', 'linkedEvents': [{'activityID': '2024-10-25T07:53:00-CME-001'}]}, {'flrID': '2024-10-26T05:57:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-26T05:57Z', 'peakTime': '2024-10-26T06:23Z', 'endTime': '2024-10-26T06:32Z', 'classType': 'M9.5', 'sourceLocation': 'S14E56', 'activeRegionNum': 13873, 'note': 'The first short minor peak of a double peaked flare, with the second peak reaching X1.8 class intensity.', 'submissionTime': '2024-10-26T12:21Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34204/-1', 'linkedEvents': [{'activityID': '2024-10-26T06:48:00-CME-001'}, {'activityID': '2024-10-26T16:45:00-SEP-001'}, {'activityID': '2024-10-26T18:05:00-SEP-001'}, {'activityID': '2024-10-26T18:57:00-SEP-001'}, {'activityID': '2024-10-26T19:02:00-SEP-001'}, {'activityID': '2024-10-26T19:50:00-SEP-001'}, {'activityID': '2024-10-26T20:06:00-SEP-001'}, {'activityID': '2024-10-26T21:43:00-SEP-001'}, {'activityID': '2024-10-28T08:57:00-SEP-001'}]}, {'flrID': '2024-10-26T06:32:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-26T06:32Z', 'peakTime': '2024-10-26T07:19Z', 'endTime': '2024-10-26T07:56Z', 'classType': 'X1.8', 'sourceLocation': 'S16E60', 'activeRegionNum': 13873, 'note': 'The second, long duration, peak of a double peaked flare, with the immediately preceding short duration peak reaching M9.5 class intensity.', 'submissionTime': '2024-10-26T12:26Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34206/-1', 'linkedEvents': [{'activityID': '2024-10-26T06:48:00-CME-001'}, {'activityID': '2024-10-26T16:45:00-SEP-001'}, {'activityID': '2024-10-26T18:05:00-SEP-001'}, {'activityID': '2024-10-26T18:57:00-SEP-001'}, {'activityID': '2024-10-26T19:02:00-SEP-001'}, {'activityID': '2024-10-26T19:50:00-SEP-001'}, {'activityID': '2024-10-26T20:06:00-SEP-001'}, {'activityID': '2024-10-26T21:43:00-SEP-001'}, {'activityID': '2024-10-28T08:57:00-SEP-001'}]}, {'flrID': '2024-10-26T11:36:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-26T11:36Z', 'peakTime': '2024-10-26T11:50Z', 'endTime': '2024-10-26T11:57Z', 'classType': 'M2.2', 'sourceLocation': 'N18E90', 'activeRegionNum': 13878, 'note': 'Active region assigned on 2024-10-28.', 'submissionTime': '2024-11-03T21:30Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34231/-1', 'linkedEvents': None}, {'flrID': '2024-10-26T11:58:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-26T11:58Z', 'peakTime': '2024-10-26T12:05Z', 'endTime': '2024-10-26T12:13Z', 'classType': 'M2.8', 'sourceLocation': 'N17E90', 'activeRegionNum': 13878, 'note': 'Occulted flare from the NE limb.  | Active region assigned on 2024-10-28.', 'submissionTime': '2024-10-30T14:41Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34211/-1', 'linkedEvents': None}, {'flrID': '2024-10-26T14:04:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-26T14:04Z', 'peakTime': '2024-10-26T14:16Z', 'endTime': '2024-10-26T14:30Z', 'classType': 'M1.6', 'sourceLocation': 'N17E90', 'activeRegionNum': 13878, 'note': 'Occulted flare on NE limb. | Active region assigned on 2024-10-28.', 'submissionTime': '2024-10-30T14:40Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34220/-1', 'linkedEvents': None}, {'flrID': '2024-10-27T23:05:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-27T23:05Z', 'peakTime': '2024-10-27T23:24Z', 'endTime': '2024-10-27T23:44Z', 'classType': 'M2.8', 'sourceLocation': 'N14E78', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-27T23:48Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34249/-1', 'linkedEvents': None}, {'flrID': '2024-10-28T03:59:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-28T03:59Z', 'peakTime': '2024-10-28T04:09Z', 'endTime': '2024-10-28T04:16Z', 'classType': 'M1.3', 'sourceLocation': 'N18E75', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-28T11:29Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34252/-1', 'linkedEvents': None}, {'flrID': '2024-10-28T14:41:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-28T14:41Z', 'peakTime': '2024-10-28T14:44Z', 'endTime': '2024-10-28T14:48Z', 'classType': 'M1.2', 'sourceLocation': 'S16E11', 'activeRegionNum': 13869, 'note': 'The main brightening of this flare was from AR 3869, however there was some brightening contribution from AR 3871 (S09E03)', 'submissionTime': '2024-10-28T15:26Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34256/-1', 'linkedEvents': None}, {'flrID': '2024-10-28T16:13:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-28T16:13Z', 'peakTime': '2024-10-28T16:28Z', 'endTime': '2024-10-28T16:44Z', 'classType': 'M4.2', 'sourceLocation': 'N15E65', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-28T16:49Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34261/-1', 'linkedEvents': None}, {'flrID': '2024-10-29T16:21:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-29T16:21Z', 'peakTime': '2024-10-29T16:33Z', 'endTime': '2024-10-29T16:41Z', 'classType': 'M1.1', 'sourceLocation': 'S12E10', 'activeRegionNum': 13873, 'note': '', 'submissionTime': '2024-10-29T16:49Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34273/-1', 'linkedEvents': None}, {'flrID': '2024-10-30T20:29:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-30T20:29Z', 'peakTime': '2024-10-30T20:53Z', 'endTime': '2024-10-30T21:14Z', 'classType': 'M7.2', 'sourceLocation': 'N16E40', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-30T21:20Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34308/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T02:16:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T02:16Z', 'peakTime': '2024-10-31T02:52Z', 'endTime': '2024-10-31T03:23Z', 'classType': 'M1.0', 'sourceLocation': 'N15E35', 'activeRegionNum': 13878, 'note': 'Start time updated from 2024-10-31T02:48Z to 2024-10-31T02:16Z.', 'submissionTime': '2024-11-01T17:13Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34323/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T03:23:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T03:23Z', 'peakTime': '2024-10-31T03:30Z', 'endTime': '2024-10-31T03:37Z', 'classType': 'M1.0', 'sourceLocation': 'N16E40', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-31T11:47Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34324/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T09:22:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T09:22Z', 'peakTime': '2024-10-31T09:37Z', 'endTime': '2024-10-31T09:56Z', 'classType': 'M1.3', 'sourceLocation': 'N16E36', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-31T11:53Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34325/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T12:41:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T12:41Z', 'peakTime': '2024-10-31T12:54Z', 'endTime': '2024-10-31T13:03Z', 'classType': 'M2.4', 'sourceLocation': 'N26W35', 'activeRegionNum': 13875, 'note': 'Some simultaneous brightening from AR 13877 (S15E05).', 'submissionTime': '2024-10-31T13:17Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34326/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T13:46:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T13:46Z', 'peakTime': '2024-10-31T13:59Z', 'endTime': '2024-10-31T14:11Z', 'classType': 'M1.2', 'sourceLocation': 'S09W40', 'activeRegionNum': 13876, 'note': '', 'submissionTime': '2024-10-31T15:06Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34327/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T18:57:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T18:57Z', 'peakTime': '2024-10-31T19:07Z', 'endTime': '2024-10-31T19:18Z', 'classType': 'M1.0', 'sourceLocation': 'S11W43', 'activeRegionNum': 13876, 'note': '', 'submissionTime': '2024-10-31T19:21Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34338/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T21:03:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T21:03Z', 'peakTime': '2024-10-31T21:10Z', 'endTime': '2024-10-31T21:12Z', 'classType': 'M4.6', 'sourceLocation': 'N16E28', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-31T21:25Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34346/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T21:12:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T21:12Z', 'peakTime': '2024-10-31T21:20Z', 'endTime': '2024-10-31T21:27Z', 'classType': 'X2.0', 'sourceLocation': 'N16E28', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-10-31T21:31Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34344/-1', 'linkedEvents': [{'activityID': '2024-10-31T22:36:00-CME-001'}]}, {'flrID': '2024-10-31T21:43:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T21:43Z', 'peakTime': '2024-10-31T21:54Z', 'endTime': '2024-10-31T22:40Z', 'classType': 'M9.4', 'sourceLocation': 'N16E28', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-11-01T15:06Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34359/-1', 'linkedEvents': None}, {'flrID': '2024-10-31T22:41:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-10-31T22:41Z', 'peakTime': '2024-10-31T22:49Z', 'endTime': '2024-10-31T22:55Z', 'classType': 'M2.7', 'sourceLocation': 'S10W48', 'activeRegionNum': 13876, 'note': '', 'submissionTime': '2024-10-31T23:06Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34350/-1', 'linkedEvents': None}, {'flrID': '2024-11-01T02:05:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-01T02:05Z', 'peakTime': '2024-11-01T02:16Z', 'endTime': '2024-11-01T02:20Z', 'classType': 'M1.3', 'sourceLocation': 'N17E27', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-11-01T11:09Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34355/-1', 'linkedEvents': None}, {'flrID': '2024-11-01T09:46:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-01T09:46Z', 'peakTime': '2024-11-01T10:14Z', 'endTime': '2024-11-01T11:08Z', 'classType': 'M1.0', 'sourceLocation': 'S10W50', 'activeRegionNum': 13876, 'note': '', 'submissionTime': '2024-11-01T11:48Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34356/-1', 'linkedEvents': None}, {'flrID': '2024-11-01T12:39:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-01T12:39Z', 'peakTime': '2024-11-01T12:52Z', 'endTime': '2024-11-01T13:00Z', 'classType': 'M1.3', 'sourceLocation': 'S10W55', 'activeRegionNum': 13876, 'note': '', 'submissionTime': '2024-11-01T13:36Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34357/-1', 'linkedEvents': None}, {'flrID': '2024-11-01T14:18:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-01T14:18Z', 'peakTime': '2024-11-01T14:31Z', 'endTime': '2024-11-01T14:42Z', 'classType': 'M2.0', 'sourceLocation': 'N16E15', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-11-01T14:53Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34358/-1', 'linkedEvents': None}, {'flrID': '2024-11-02T07:27:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-02T07:27Z', 'peakTime': '2024-11-02T07:38Z', 'endTime': '2024-11-02T07:53Z', 'classType': 'M1.0', 'sourceLocation': 'S15W50', 'activeRegionNum': 13869, 'note': '', 'submissionTime': '2024-11-02T12:10Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34367/-1', 'linkedEvents': None}, {'flrID': '2024-11-02T08:13:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-02T08:13Z', 'peakTime': '2024-11-02T08:31Z', 'endTime': '2024-11-02T08:45Z', 'classType': 'M1.2', 'sourceLocation': 'S10W64', 'activeRegionNum': 13876, 'note': '', 'submissionTime': '2024-11-02T12:12Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34368/-1', 'linkedEvents': None}, {'flrID': '2024-11-03T03:02:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-03T03:02Z', 'peakTime': '2024-11-03T03:11Z', 'endTime': '2024-11-03T03:16Z', 'classType': 'M1.1', 'sourceLocation': 'S15W61', 'activeRegionNum': 13869, 'note': '', 'submissionTime': '2024-11-03T13:21Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34378/-1', 'linkedEvents': None}, {'flrID': '2024-11-03T08:39:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-03T08:39Z', 'peakTime': '2024-11-03T08:49Z', 'endTime': '2024-11-03T09:11Z', 'classType': 'M1.1', 'sourceLocation': 'N15W06', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-11-03T13:22Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34379/-1', 'linkedEvents': None}, {'flrID': '2024-11-03T15:13:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-03T15:13Z', 'peakTime': '2024-11-03T15:18Z', 'endTime': '2024-11-03T15:19Z', 'classType': 'M1.1', 'sourceLocation': 'S10E53', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-03T15:50Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34380/-1', 'linkedEvents': [{'activityID': '2024-11-03T15:27:00-CME-001'}]}, {'flrID': '2024-11-03T15:19:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-03T15:19Z', 'peakTime': '2024-11-03T15:24Z', 'endTime': '2024-11-03T15:29Z', 'classType': 'M1.4', 'sourceLocation': 'S15E75', 'activeRegionNum': 13869, 'note': '', 'submissionTime': '2024-11-03T15:52Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34381/-1', 'linkedEvents': None}, {'flrID': '2024-11-03T17:38:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-03T17:38Z', 'peakTime': '2024-11-03T17:53Z', 'endTime': '2024-11-03T17:58Z', 'classType': 'M1.3', 'sourceLocation': 'S08E48', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-03T18:08Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34386/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T00:52:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T00:52Z', 'peakTime': '2024-11-04T00:57Z', 'endTime': '2024-11-04T01:02Z', 'classType': 'M1.5', 'sourceLocation': 'S08E44', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T12:08Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34392/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T01:05:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T01:05Z', 'peakTime': '2024-11-04T01:40Z', 'endTime': '2024-11-04T02:03Z', 'classType': 'M3.8', 'sourceLocation': 'S04E42', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T02:58Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34395/-1', 'linkedEvents': [{'activityID': '2024-11-04T01:36:00-CME-001'}]}, {'flrID': '2024-11-04T03:38:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T03:38Z', 'peakTime': '2024-11-04T03:45Z', 'endTime': '2024-11-04T03:53Z', 'classType': 'M1.1', 'sourceLocation': 'S05E73', 'activeRegionNum': 13886, 'note': '', 'submissionTime': '2024-11-04T12:10Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34396/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T04:06:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T04:06Z', 'peakTime': '2024-11-04T04:15Z', 'endTime': '2024-11-04T04:23Z', 'classType': 'M1.0', 'sourceLocation': 'S08E45', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T12:13Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34397/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T04:31:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T04:31Z', 'peakTime': '2024-11-04T04:34Z', 'endTime': '2024-11-04T04:38Z', 'classType': 'M1.4', 'sourceLocation': 'N17W11', 'activeRegionNum': 13878, 'note': '', 'submissionTime': '2024-11-04T12:15Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34398/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T07:02:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T07:02Z', 'peakTime': '2024-11-04T07:08Z', 'endTime': '2024-11-04T07:21Z', 'classType': 'M1.3', 'sourceLocation': 'S08E45', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T12:17Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34399/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T08:29:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T08:29Z', 'peakTime': '2024-11-04T08:40Z', 'endTime': '2024-11-04T08:47Z', 'classType': 'M1.2', 'sourceLocation': 'S08E43', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T12:19Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34400/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T10:07:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T10:07Z', 'peakTime': '2024-11-04T10:17Z', 'endTime': '2024-11-04T10:25Z', 'classType': 'M1.6', 'sourceLocation': 'S08E43', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T12:20Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34401/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T11:46:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T11:46Z', 'peakTime': '2024-11-04T11:55Z', 'endTime': '2024-11-04T12:04Z', 'classType': 'C6.6', 'sourceLocation': 'S08W55', 'activeRegionNum': 13885, 'note': '', 'submissionTime': '2024-11-04T19:16Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34415/-1', 'linkedEvents': [{'activityID': '2024-11-04T13:23:00-CME-001'}]}, {'flrID': '2024-11-04T14:05:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T14:05Z', 'peakTime': '2024-11-04T14:28Z', 'endTime': '2024-11-04T14:50Z', 'classType': 'M1.1', 'sourceLocation': 'S07E40', 'activeRegionNum': 13883, 'note': 'Simultaneous flaring also seen near AR 3869 (S18W82) near the west limb.', 'submissionTime': '2024-11-04T15:30Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34407/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T15:00:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T15:00Z', 'peakTime': '2024-11-04T15:08Z', 'endTime': '2024-11-04T15:12Z', 'classType': 'M1.3', 'sourceLocation': 'S07E38', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-04T15:29Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34408/-1', 'linkedEvents': None}, {'flrID': '2024-11-04T15:26:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T15:26Z', 'peakTime': '2024-11-04T15:33Z', 'endTime': '2024-11-04T15:36Z', 'classType': 'M3.7', 'sourceLocation': 'S07E39', 'activeRegionNum': 13883, 'note': 'Double-peaked flare directly followed by an M5.5 flare peaking at 2024-11-04T15:33Z from the same AR. End time manually selected as start of following M5.5.', 'submissionTime': '2024-11-04T22:28Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34409/-1', 'linkedEvents': [{'activityID': '2024-11-04T17:24:00-CME-001'}]}, {'flrID': '2024-11-04T15:36:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-04T15:36Z', 'peakTime': '2024-11-04T15:38Z', 'endTime': '2024-11-04T15:41Z', 'classType': 'M5.5', 'sourceLocation': 'S07E38', 'activeRegionNum': 13883, 'note': 'Double-peaked flare directly preceded by an M3.7 flare peaking at 2024-11-04T15:33Z from the same AR. End time manually calculated.', 'submissionTime': '2024-11-04T22:27Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34410/-1', 'linkedEvents': [{'activityID': '2024-11-04T17:24:00-CME-001'}]}, {'flrID': '2024-11-05T06:35:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-05T06:35Z', 'peakTime': '2024-11-05T06:54Z', 'endTime': '2024-11-05T07:08Z', 'classType': 'M2.6', 'sourceLocation': 'S07E85', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-08T13:57Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34423/-1', 'linkedEvents': [{'activityID': '2024-11-05T07:36:00-CME-001'}]}, {'flrID': '2024-11-05T09:11:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-05T09:11Z', 'peakTime': '2024-11-05T09:23Z', 'endTime': '2024-11-05T09:49Z', 'classType': 'M1.0', 'sourceLocation': 'S07E28', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-05T15:16Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34424/-1', 'linkedEvents': None}, {'flrID': '2024-11-05T13:28:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-05T13:28Z', 'peakTime': '2024-11-05T13:39Z', 'endTime': '2024-11-05T13:54Z', 'classType': 'M1.2', 'sourceLocation': 'S08E28', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-05T14:11Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34425/-1', 'linkedEvents': None}, {'flrID': '2024-11-05T13:58:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-05T13:58Z', 'peakTime': '2024-11-05T14:19Z', 'endTime': '2024-11-05T14:27Z', 'classType': 'M2.9', 'sourceLocation': 'S08E28', 'activeRegionNum': 13883, 'note': 'Double peaked flare with the M1.2 flare peaking at 2024-11-05T13:39Z from AR 3883.', 'submissionTime': '2024-11-05T14:32Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34430/-1', 'linkedEvents': None}, {'flrID': '2024-11-05T15:05:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-05T15:05Z', 'peakTime': '2024-11-05T15:26Z', 'endTime': '2024-11-05T15:43Z', 'classType': 'M4.1', 'sourceLocation': 'S15W88', 'activeRegionNum': 13872, 'note': '', 'submissionTime': '2024-11-05T17:07Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34433/-1', 'linkedEvents': [{'activityID': '2024-11-05T16:09:00-CME-001'}]}, {'flrID': '2024-11-06T02:28:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T02:28Z', 'peakTime': '2024-11-06T02:38Z', 'endTime': '2024-11-06T02:46Z', 'classType': 'M1.1', 'sourceLocation': 'S06E15', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-06T02:51Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34439/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T03:02:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T03:02Z', 'peakTime': '2024-11-06T03:09Z', 'endTime': '2024-11-06T03:14Z', 'classType': 'M1.2', 'sourceLocation': 'S06E15', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-06T12:11Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34443/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T07:36:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T07:36Z', 'peakTime': '2024-11-06T08:04Z', 'endTime': '2024-11-06T08:23Z', 'classType': 'M2.9', 'sourceLocation': 'S06E15', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-06T12:12Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34444/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T08:48:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T08:48Z', 'peakTime': '2024-11-06T08:50Z', 'endTime': '2024-11-06T08:54Z', 'classType': 'M5.8', 'sourceLocation': 'N16W60', 'activeRegionNum': 13887, 'note': '', 'submissionTime': '2024-11-06T12:04Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34440/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T11:56:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T11:56Z', 'peakTime': '2024-11-06T12:04Z', 'endTime': '2024-11-06T12:10Z', 'classType': 'M1.5', 'sourceLocation': 'S06E15', 'activeRegionNum': 13883, 'note': 'Simultaneous flaring from an unnumbered region on the east limb, around latitude S10.', 'submissionTime': '2024-11-06T12:15Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34445/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T12:56:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T12:56Z', 'peakTime': '2024-11-06T13:02Z', 'endTime': '2024-11-06T13:11Z', 'classType': 'M1.2', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-08T14:09Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34446/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T13:36:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T13:36Z', 'peakTime': '2024-11-06T13:40Z', 'endTime': '2024-11-06T13:46Z', 'classType': 'X2.3', 'sourceLocation': 'S06E13', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-06T14:29Z', 'versionId': 4, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34449/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T14:27:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T14:27Z', 'peakTime': '2024-11-06T14:38Z', 'endTime': '2024-11-06T14:45Z', 'classType': 'M5.3', 'sourceLocation': 'S10E90', 'activeRegionNum': None, 'note': 'This flare was observed from a currently unnumbered region near the eastern limb. The observed X-ray flux associated with this flare fluctuated above M5.0 levels twice, but the associated EUV imagery, seen in SDO AIA 131, confirms that this is one event.', 'submissionTime': '2024-11-06T17:02Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34452/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T15:50:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T15:50Z', 'peakTime': '2024-11-06T15:57Z', 'endTime': '2024-11-06T16:03Z', 'classType': 'M1.6', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-08T14:22Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34466/-1', 'linkedEvents': [{'activityID': '2024-11-06T16:48:00-CME-001'}]}, {'flrID': '2024-11-06T17:10:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T17:10Z', 'peakTime': '2024-11-06T17:18Z', 'endTime': '2024-11-06T17:23Z', 'classType': 'M1.2', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-08T14:23Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34465/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T18:53:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T18:53Z', 'peakTime': '2024-11-06T18:59Z', 'endTime': '2024-11-06T19:13Z', 'classType': 'M1.1', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': 'Simultaneous flaring from AR 3883 as well.', 'submissionTime': '2024-11-08T14:24Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34470/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T20:35:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T20:35Z', 'peakTime': '2024-11-06T20:42Z', 'endTime': '2024-11-06T20:52Z', 'classType': 'M1.3', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-07T16:04Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34475/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T22:43:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T22:43Z', 'peakTime': '2024-11-06T23:05Z', 'endTime': '2024-11-06T23:10Z', 'classType': 'M1.1', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-07T16:06Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34477/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T23:10:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T23:10Z', 'peakTime': '2024-11-06T23:16Z', 'endTime': '2024-11-06T23:21Z', 'classType': 'M1.1', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': 'Simultaneous flaring from AR 3889 on E limb and AR 3878.', 'submissionTime': '2024-11-07T16:07Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34478/-1', 'linkedEvents': [{'activityID': '2024-11-06T23:36:00-CME-001'}]}, {'flrID': '2024-11-06T23:24:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T23:24Z', 'peakTime': '2024-11-06T23:28Z', 'endTime': '2024-11-06T23:31Z', 'classType': 'M1.2', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-08T14:30Z', 'versionId': 3, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34479/-1', 'linkedEvents': None}, {'flrID': '2024-11-06T23:42:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-06T23:42Z', 'peakTime': '2024-11-07T00:04Z', 'endTime': '2024-11-07T00:16Z', 'classType': 'M1.6', 'sourceLocation': 'S06E08', 'activeRegionNum': 13883, 'note': 'Simultaneous flaring from AR 3883 and AR 3889 on the E limb.', 'submissionTime': '2024-11-07T16:07Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34482/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T01:15:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T01:15Z', 'peakTime': '2024-11-07T01:27Z', 'endTime': '2024-11-07T01:39Z', 'classType': 'M2.5', 'sourceLocation': 'S10E90', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-07T16:08Z', 'versionId': 2, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34487/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T03:52:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T03:52Z', 'peakTime': '2024-11-07T04:20Z', 'endTime': '2024-11-07T04:32Z', 'classType': 'M2.5', 'sourceLocation': 'S07E04', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-07T12:11Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34491/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T07:20:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T07:20Z', 'peakTime': '2024-11-07T07:26Z', 'endTime': '2024-11-07T07:36Z', 'classType': 'M1.3', 'sourceLocation': 'S09E05', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-07T12:13Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34492/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T07:36:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T07:36Z', 'peakTime': '2024-11-07T07:43Z', 'endTime': '2024-11-07T07:46Z', 'classType': 'M1.6', 'sourceLocation': 'S11E85', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-07T12:17Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34493/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T07:46:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T07:46Z', 'peakTime': '2024-11-07T07:54Z', 'endTime': '2024-11-07T08:01Z', 'classType': 'M2.7', 'sourceLocation': 'S11E85', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-07T12:19Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34494/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T11:53:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T11:53Z', 'peakTime': '2024-11-07T12:02Z', 'endTime': '2024-11-07T12:11Z', 'classType': 'M1.4', 'sourceLocation': 'S08E78', 'activeRegionNum': 13889, 'note': '', 'submissionTime': '2024-11-07T12:21Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34495/-1', 'linkedEvents': None}, {'flrID': '2024-11-07T14:49:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-07T14:49Z', 'peakTime': '2024-11-07T15:06Z', 'endTime': '2024-11-07T15:20Z', 'classType': 'M2.3', 'sourceLocation': 'S08W03', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-07T15:40Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34502/-1', 'linkedEvents': None}, {'flrID': '2024-11-08T02:53:00-FLR-001', 'instruments': [{'displayName': 'GOES-P: EXIS 1.0-8.0'}], 'beginTime': '2024-11-08T02:53Z', 'peakTime': '2024-11-08T03:01Z', 'endTime': '2024-11-08T03:12Z', 'classType': 'M1.5', 'sourceLocation': 'S06W07', 'activeRegionNum': 13883, 'note': '', 'submissionTime': '2024-11-08T03:16Z', 'versionId': 1, 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/FLR/34516/-1', 'linkedEvents': None}]\n",
+            "Геомагнитная буря [{'gstID': '2024-10-10T15:00:00-GST-001', 'startTime': '2024-10-10T15:00Z', 'allKpIndex': [{'observedTime': '2024-10-10T18:00Z', 'kpIndex': 7.67, 'source': 'NOAA'}, {'observedTime': '2024-10-10T21:00Z', 'kpIndex': 8.33, 'source': 'NOAA'}, {'observedTime': '2024-10-11T00:00Z', 'kpIndex': 8.67, 'source': 'NOAA'}, {'observedTime': '2024-10-11T03:00Z', 'kpIndex': 8.0, 'source': 'NOAA'}, {'observedTime': '2024-10-11T06:00Z', 'kpIndex': 7.67, 'source': 'NOAA'}, {'observedTime': '2024-10-11T09:00Z', 'kpIndex': 8.0, 'source': 'NOAA'}, {'observedTime': '2024-10-11T12:00Z', 'kpIndex': 7.33, 'source': 'NOAA'}, {'observedTime': '2024-10-11T15:00Z', 'kpIndex': 6.67, 'source': 'NOAA'}], 'link': 'https://webtools.ccmc.gsfc.nasa.gov/DONKI/view/GST/33913/-1', 'linkedEvents': [{'activityID': '2024-10-09T02:12:00-CME-001'}, {'activityID': '2024-10-10T14:46:00-IPS-001'}, {'activityID': '2024-10-10T17:13:00-MPC-001'}], 'submissionTime': '2024-10-10T18:32Z', 'versionId': 1}]\n",
+            "\n",
+            "Выберите номер фукнции:\n",
+            "0. Выход\n",
+            "1. Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\n",
+            "2. Поиск фотографии с марсохода по дате и типу камеры.\n",
+            "3. Поиск объектов, сближающиеся с Землёй.\n",
+            "4. Отображение последних данных о космической погоде, включая солнечные вспышки и геомагнитные бури.\n",
+            "Ваш ответ: 0\n",
+            "Выход.\n"
+          ]
+        }
+      ],
+      "source": [
+        "import requests\n",
+        "\n",
+        "\n",
+        "def send_request(url):\n",
+        "    response = requests.get(url)\n",
+        "    if response.status_code == 200:\n",
+        "        return response.json()\n",
+        "\n",
+        "\n",
+        "def get_data(url):\n",
+        "    data = send_request(url)\n",
+        "    return data[\"hdurl\"] + \" \" + data[\"title\"] + data[\"explanation\"] + data[\"date\"]\n",
+        "\n",
+        "\n",
+        "def rover(url, camera_and_date):\n",
+        "    cd = camera_and_date\n",
+        "    data = send_request(url)\n",
+        "    for p in range(len(data[\"photos\"])):\n",
+        "        cond1 = int(cd[0]) == data[\"photos\"][p][\"camera\"][\"id\"]\n",
+        "        cond2 = cd[1] == data[\"photos\"][p][\"camera\"][\"name\"]\n",
+        "        cond3 = int(cd[2]) == data[\"photos\"][p][\"camera\"][\"rover_id\"]\n",
+        "        cond4 = cd[3] == data[\"photos\"][p][\"camera\"][\"full_name\"]\n",
+        "        cond5 = cd[4] == data[\"photos\"][p][\"rover\"][\"launch_date\"]\n",
+        "        if cond1 and cond2 and cond3 and cond4 and cond5:\n",
+        "            return f'{data[\"photos\"][p][\"img_src\"]}'\n",
+        "        else:\n",
+        "            return f'Не найдено. Возможно вы что-то пропустили.'\n",
+        "\n",
+        "\n",
+        "def NEO(url, name):\n",
+        "    data = send_request(url)\n",
+        "    objects = data[\"near_earth_objects\"]\n",
+        "    for k in objects.keys():\n",
+        "        cond = name == objects[k][0][\"name\"]\n",
+        "        if cond:\n",
+        "            size = objects[k][0][\"estimated_diameter\"][\"meters\"][\"estimated_diameter_max\"]\n",
+        "            if objects[k][0][\"is_potentially_hazardous_asteroid\"]:\n",
+        "                dangerous = \"Есть потенциальная угроза.\"\n",
+        "            else:\n",
+        "                dangerous = \"Нет потенциальной угрозы.\"\n",
+        "            return f'Дата: {k}' \"\"\"\n",
+        "\"\"\"f'Размер: {size}'\"\"\"\n",
+        "\"\"\"f'{dangerous}'\n",
+        "\n",
+        "\n",
+        "def weather():\n",
+        "    url_sun = \"https://api.nasa.gov/DONKI/FLR?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&api_key=v7Kr3UAP58fnc6McedEnleAbxd0RRd1O4P7tAUtB\"\n",
+        "    data_sun = send_request(url_sun)\n",
+        "    url_geomagnetic_storms = \"https://api.nasa.gov/DONKI/GST?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&api_key=v7Kr3UAP58fnc6McedEnleAbxd0RRd1O4P7tAUtB\"\n",
+        "    data_storms = send_request(url_geomagnetic_storms)\n",
+        "    return f'Солнечная вспышка {data_sun}'\"\"\"\n",
+        "\"\"\"f'Геомагнитная буря {data_storms}'\n",
+        "\n",
+        "\n",
+        "while True:\n",
+        "    info_str_choice = \"\"\"\n",
+        "Выберите номер фукнции:\n",
+        "0. Выход\n",
+        "1. Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\n",
+        "2. Поиск фотографии с марсохода по дате и типу камеры.\n",
+        "3. Поиск объектов, сближающиеся с Землёй.\n",
+        "4. Отображение последних данных о космической погоде, включая солнечные вспышки и геомагнитные бури.\n",
+        "Ваш ответ: \"\"\"\n",
+        "    choice = input(info_str_choice)\n",
+        "\n",
+        "    if choice == \"1\":\n",
+        "        url = \"https://api.nasa.gov/planetary/apod?api_key=bKla08t0QdeBVcBdzv3UqLb5ke6pLYWMGImkaEjf\"\n",
+        "        print(\"Астрономическая картинка дня (APOD): Отображение APOD с пояснениями к нему.\" + \"\"\"\n",
+        "\"\"\" + get_data(url))\n",
+        "\n",
+        "    elif choice == \"2\":\n",
+        "        url_rover = \"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=bKla08t0QdeBVcBdzv3UqLb5ke6pLYWMGImkaEjf\"\n",
+        "        info_str = \"\"\"Напишите тип камеры и дату через запятую без ковычек:\n",
+        "Образец: 'id', 'name', 'rover_id', 'full_name', 'launch_date'.\n",
+        "Дату запуска записывать в следующем формате: \"2011-11-26\"\n",
+        "Ваши данные: \"\"\"\n",
+        "        camera_and_date = input(info_str).split(\", \")\n",
+        "        print(rover(url_rover, camera_and_date))\n",
+        "\n",
+        "    elif choice == \"3\":\n",
+        "        info_str_object_NEO = \"\"\"Напишите название объекта, для вывода даты,\n",
+        "размера и обнаружения присутствия потенциальной угрозы.\n",
+        "Ваши данные: \"\"\"\n",
+        "        name_object = input(info_str_object_NEO)\n",
+        "        url_NEO = \"https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=bKla08t0QdeBVcBdzv3UqLb5ke6pLYWMGImkaEjf\"\n",
+        "        print(NEO(url_NEO, name_object))\n",
+        "\n",
+        "    elif choice == \"4\":\n",
+        "        print(weather())\n",
+        "\n",
+        "    elif choice == \"0\":\n",
+        "        print(\"Выход.\")\n",
+        "        break"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 2"
+      ],
+      "metadata": {
+        "id": "ia9UtA0cU1Iy"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Описание задачи\n",
+        "\n",
+        "Цель этой задачи - создать скрипт на Python, который взаимодействует с API Чикагского института искусств (https://api.artic.edu/docs/) для извлечения и отображения произведений искусства. Скрипт должен позволять пользователям просматривать работы по страницам, фильтровать их по имени художника и просматривать подробную информацию о выбранных произведениях искусства. Ниже приведены требования и функциональные возможности, которые необходимо реализовать:\n",
+        "\n",
+        "Требования:\n",
+        "Извлекать произведения искусства:\n",
+        "\n",
+        "- Создайте функцию, которая извлекает список произведений искусства из API Чикагского института искусств.\n",
+        "Функция должна принимать параметр page для разбивки на страницы и возвращать список произведений искусства вместе с информацией о разбивке на страницы.\n",
+        "Фильтровать произведения искусства:\n",
+        "\n",
+        "- Реализуйте функцию, которая фильтрует список произведений искусства на основе имени указанного художника. Функция должна возвращать список работ, которые соответствуют имени художника (без учета регистра).\n",
+        "Отображать подробную информацию об оформлении:\n",
+        "\n",
+        "- Напишите функцию, которая отображает названия работ для пользователя и позволяет ему выбрать одну из них, введя соответствующий номер.\n",
+        "После выбора функция должна отображать подробную информацию о выбранном произведении, включая название, исполнителя, дату и носитель.\n",
+        "Разбивка на страницы и взаимодействие с пользователем:\n",
+        "\n",
+        "- Создайте основную функцию, которая управляет выборкой произведений и взаимодействием с пользователем.\n",
+        "\n",
+        "Разрешите пользователям перемещаться по страницам с произведениями искусства, выполнять фильтрацию по исполнителю или выходить из программы.\n",
+        "\n",
+        "Если страниц с произведениями искусства несколько, укажите варианты перехода к следующей странице, предыдущей странице, фильтрации по исполнителю или выхода из программы."
+      ],
+      "metadata": {
+        "id": "Ofu_GmqrU1Iy"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "jjUH1GznU1Iy",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "c74f0f18-59f7-46eb-c89a-2cc8401ea53c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Чтобы найти информацию о произведении искусства, \n",
+            "используйте команда 'id' и запишите его:\n",
+            "id\n",
+            "Укажите страницу произведения искусства: 129884\n",
+            "Произведение искусства: Starry Night and the Astronauts\n",
+            "Художник: Alma Thomas\n",
+            "Дата: 1972\n",
+            "Носитель: Acrylic on canvas\n"
+          ]
+        }
+      ],
+      "source": [
+        "import requests\n",
+        "\n",
+        "\n",
+        "def send_request(url):\n",
+        "    response = requests.get(url)\n",
+        "    if response.status_code == 200:\n",
+        "        return response.json()\n",
+        "\n",
+        "\n",
+        "def get_about_artworks():\n",
+        "    info_str = \"\"\"Чтобы найти информацию о произведении искусства,\n",
+        "используйте команда 'id' и запишите его:\n",
+        "\"\"\"\n",
+        "    request = input(info_str)\n",
+        "    if request == \"id\":\n",
+        "        page = input(\"Укажите страницу произведения искусства: \")\n",
+        "        url_page = f\"https://api.artic.edu/api/v1/artworks/{page}\"\n",
+        "        print(get_art_from_page(url_page))\n",
+        "    else:\n",
+        "        print(None)\n",
+        "\n",
+        "\n",
+        "def get_art_from_page(url):\n",
+        "    data = send_request(url)\n",
+        "    try:\n",
+        "        str_info = \"Произведение искусства: \" + data[\"data\"][\"title\"] + \"\"\"\n",
+        "Художник: \"\"\" + data[\"data\"][\"artist_titles\"][0] + \"\"\"\n",
+        "Дата: \"\"\" + data[\"data\"][\"date_display\"] + \"\"\"\n",
+        "Носитель: \"\"\" + data[\"data\"][\"medium_display\"]\n",
+        "        return str_info\n",
+        "    except NameError:\n",
+        "        return None\n",
+        "    except TypeError:\n",
+        "        return None\n",
+        "\n",
+        "\n",
+        "def get_list_artworks(url):\n",
+        "    list_artworks = []\n",
+        "    for a in range(129800, 129884+1):\n",
+        "        try:\n",
+        "            data = send_request(url + str(a))\n",
+        "            art = data[\"data\"][\"title\"]\n",
+        "            list_artworks.append(art)\n",
+        "        except TypeError:\n",
+        "            pass\n",
+        "        except NameError:\n",
+        "            pass\n",
+        "        except IndexError:\n",
+        "            pass\n",
+        "    return list_artworks\n",
+        "\n",
+        "\n",
+        "get_about_artworks()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 3"
+      ],
+      "metadata": {
+        "id": "eecUb-akU1ji"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Задача: Создать программу по управлению портфелем криптовалют\n",
+        "\n",
+        "Цель: Создать скрипт на Python, который извлекает цены на криптовалюты в режиме реального времени, позволяет пользователям управлять портфелем криптовалют, вычисляет общую стоимость портфеля, отслеживает изменения цен и предоставляет исторические данные о ценах для анализа.\n",
+        "\n",
+        "Требования:\n",
+        "Получение текущих цен на криптовалюты:\n",
+        "\n",
+        "Используйте https://docs.coingecko.com/ для получения актуальных цен на список криптовалют.\n",
+        "\n",
+        "Управление портфелем:\n",
+        "\n",
+        "- Позволяет пользователю создавать портфель криптовалют и управлять им, указывая количество каждой криптовалюты, которой он владеет.\n",
+        "- Расчитывает общую стоимость портфеля в указанной фиатной валюте (например, долларах США).\n",
+        "\n",
+        "Отслеживание изменения цен:\n",
+        "\n",
+        "- Отображение процентного изменения цены для каждой криптовалюты в портфеле за последние 24 часа.\n",
+        "- Выделите все криптовалюты, стоимость которых значительно увеличилась или снизилась.\n",
+        "\n",
+        "Поиск исторических данных о ценах:\n",
+        "\n",
+        "- Получение исторических данных о ценах на указанную криптовалюту за последнюю неделю.\n",
+        "- Предоставьте пользователю возможность визуализировать эти данные в простом текстовом формате (например, цены за день).\n",
+        "\n",
+        "Взаимодействие с пользователем:\n",
+        "\n",
+        "- Реализуйте интерфейс командной строки для ввода данных пользователем.\n",
+        "- Предоставьте опции для получения текущих цен, управления портфелем, просмотра изменений цен или анализа исторических данных.\n"
+      ],
+      "metadata": {
+        "id": "jsK7IKptU1ji"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "_0DToTqlvywa"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Дополнительно: Задание 4"
+      ],
+      "metadata": {
+        "id": "QGrsZrv5U1s8"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Задание 4: Проектное\n",
+        "\n",
+        "Вам необходимо самостоятельно найти откртое API предоставляющее информацию в открытом доступе и реализовать собственный проект!\n",
+        "\n",
+        "\n",
+        "Критерии приемки результата:\n",
+        "\n",
+        "- Проект включает в себя не менее 5 возможостей для пользователя\n",
+        "- Проект позволяет использовать все возможности проекта пользователю при помощи взаимодействия через коммандную строку\n",
+        "- Проект работает с открытым API (это значит что при проверке вашей работы преподавателем, преподавателю необходимо просто запустить ячейку с кодом вашего проекта и она будет работать без дополнительных манипуляции)\n",
+        "- Проект должен обязательно включать в себя ряд используемых конструкции:\n",
+        "    - Функции\n",
+        "    - Условные конструкции\n",
+        "    - Ввод/вывод\n",
+        "    - Словари/Списки\n",
+        "- Допускается использование библиотек:\n",
+        "    - requests\n",
+        "    - datetime\n",
+        "    - random"
+      ],
+      "metadata": {
+        "id": "qs_XITmYU1s8"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Здесь добавьте описание вашего проекта**"
+      ],
+      "metadata": {
+        "id": "VKXhaJi4FL0B"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "wiA55k1KU1s8"
+      },
+      "outputs": [],
+      "source": [
+        "#  А здесь код"
+      ]
+    }
+  ]
+}
