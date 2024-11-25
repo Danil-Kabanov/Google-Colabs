@@ -1,0 +1,490 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Danil-Kabanov/Google-colabs/blob/main/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0%200.6.0\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "\n",
+        "---\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "tKNG_RzWxG6g"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **Дисклеймер**\n",
+        "\n",
+        "В данной практике будет введен дополнительный критерий: чистота и читаемость кода, а также соблюдение правил описанных в начале практики"
+      ],
+      "metadata": {
+        "id": "cFcrKfclKWh0"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "\n",
+        "---\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "0SnE87X1xDlV"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 1\n",
+        "\n",
+        "**Задача:**\n",
+        "\n",
+        "Напишите функцию очищающий список от дубликтов\n",
+        "\n",
+        "\n",
+        "*Запрещено:*\n",
+        "\n",
+        "*   Использовать set() или готовые функции очищающие список от дубликатов\n",
+        "\n",
+        "Вввод:\n",
+        "\n",
+        "```\n",
+        "apple banana apple 1 3 4 4 5\n",
+        "```\n",
+        "\n",
+        "\n",
+        "Вывод:\n",
+        "\n",
+        "```\n",
+        "apple banana 1 3 4 5\n",
+        "```\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "VxawR9NubT_F"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "check_list = ['apple', 'banana', 'apple', '1', '3', '4', '4', '5']\n",
+        "new_list = []\n",
+        "\n",
+        "\n",
+        "for i in check_list:\n",
+        "    if not (i in new_list):\n",
+        "        new_list.append(i)\n",
+        "\n",
+        "\n",
+        "print(new_list)"
+      ],
+      "metadata": {
+        "id": "ml5gnbPXbeju",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "88636437-0b08-4a50-e109-e120e9d83391"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['apple', 'banana', '1', '3', '4', '5']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 2\n",
+        "\n",
+        "**Задача:**\n",
+        "\n",
+        "Написать функцию для нахождения простых чисел в диапазоне\n",
+        "\n",
+        "Ввод:\n",
+        "\n",
+        "```\n",
+        "10, 50\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "\n",
+        "```\n",
+        "11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "y05x0eD0cVCC"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def prime_ans(first_numb, second_numb):\n",
+        "    prime_numb = []\n",
+        "    for i in range(first_numb, second_numb + 1):\n",
+        "        check_list = []\n",
+        "        for k in range(1, i + 1):\n",
+        "            if i % k == 0:\n",
+        "                check_list.append(k)\n",
+        "        if len(check_list) == 2:\n",
+        "            prime_numb.append(i)\n",
+        "    return prime_numb\n",
+        "\n",
+        "\n",
+        "first_numb = int(input(\"Введите первое число: \"))\n",
+        "second_numb = int(input(\"Введите второе число: \"))\n",
+        "print(prime_ans(first_numb, second_numb))"
+      ],
+      "metadata": {
+        "id": "XSMJnLgrc6Bf",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "c3f979c4-b53f-46cc-d2af-3712fc6a5ab0"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Введите первое число: 10\n",
+            "Введите второе число: 50\n",
+            "[11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 3\n",
+        "\n",
+        "Напишите функцию для объединения двух списков (список ключей и список значении) в словарь\n",
+        "\n",
+        "*Запрещено:*\n",
+        "\n",
+        "*   Использования готовых функции для объединения списков (пример: zip() )\n",
+        "\n",
+        "Дано:\n",
+        "\n",
+        "```\n",
+        "keys = ['a', 'b', 'c', 'e' ]\n",
+        "values = [1, 2, 3, 4]\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "```\n",
+        "{'a': 1, 'b': 2, 'c': 3, 'e': 4}\n",
+        "```\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "vYM0LyxxdElN"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def new_dict(key, value):\n",
+        "    my_dict = {}\n",
+        "    for i in range(len(key)):\n",
+        "        keys = key[i]\n",
+        "        values = value[i]\n",
+        "        my_dict[keys] = values\n",
+        "    return my_dict\n",
+        "\n",
+        "\n",
+        "keys = ['a', 'b', 'c', 'e']\n",
+        "values = [1, 2, 3, 4]\n",
+        "print(new_dict(keys, values))"
+      ],
+      "metadata": {
+        "id": "CRvhHTjCdvjS",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "288e1c6a-bb10-4377-c5b6-f19c01bb5020"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'a': 1, 'b': 2, 'c': 3, 'e': 4}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 4\n",
+        "\n",
+        "Напишите функцию(ии) для подсчета статистических параметров:\n",
+        "*   Сумму\n",
+        "*   Среднее арифметическое\n",
+        "*   Медиану\n",
+        "*   Моду\n",
+        "\n",
+        "\n",
+        "*Запрещено:*\n",
+        "\n",
+        "*   sum()\n",
+        "*   sorted()\n",
+        "*   и других функции предоставляющих готовое решение задания\n",
+        "\n",
+        "Дано:\n",
+        "\n",
+        "```\n",
+        "numbers = [1, 2, 2, 3, 4, 5, 6, 7, 8 ,9 ,10]\n",
+        "\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "```\n",
+        "{'mean': 5.181818181818182, 'median': 5, 'mode': 2, 'sum': 57}\n",
+        "```\n"
+      ],
+      "metadata": {
+        "id": "L_w8H8i-fQcP"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def summ(my_list):\n",
+        "    summa = 0\n",
+        "    for i in my_list:\n",
+        "        summa += i\n",
+        "    return summa\n",
+        "\n",
+        "\n",
+        "def mean(my_list):\n",
+        "    leng = 0\n",
+        "    for i in my_list:\n",
+        "        leng += 1\n",
+        "    aver = summ(my_list)/leng\n",
+        "    return aver\n",
+        "\n",
+        "\n",
+        "def median(my_list):\n",
+        "    ans = 0\n",
+        "    leng = 0\n",
+        "    for i in my_list:\n",
+        "        leng += 1\n",
+        "    if leng % 2 != 0:\n",
+        "        ind = leng//2\n",
+        "        ans = ind\n",
+        "    else:\n",
+        "        ind1 = leng//2 - 1\n",
+        "        ind2 = leng//2\n",
+        "        ans = (ind1 + ind2) / 2\n",
+        "    return ans\n",
+        "\n",
+        "\n",
+        "def mod(my_list):\n",
+        "    count = 1\n",
+        "    for i in my_list:\n",
+        "        if my_list.count(i) < my_list.count(i + 1):\n",
+        "            count = i + 1\n",
+        "    return count\n",
+        "\n",
+        "\n",
+        "numbers = [1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n",
+        "finite_dict = {}\n",
+        "finite_dict['summa'] = summ(numbers)\n",
+        "finite_dict['mean'] = mean(numbers)\n",
+        "finite_dict['median'] = median(numbers)\n",
+        "finite_dict['mod'] = mod(numbers)\n",
+        "print(finite_dict)"
+      ],
+      "metadata": {
+        "id": "dW6jW_rjfuba",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "4d3b1868-d269-4073-9588-0ff099d53272"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'summa': 57, 'mean': 5.181818181818182, 'median': 5, 'mod': 2}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 5\n",
+        "\n",
+        "На ввод поступает строка символов. Строка состоит из слов, которые отделены друг от друга пробелами. Необходимо вывести самое длинное слово и его порядковый номер.\n",
+        "\n",
+        "*Запрещено:*\n",
+        "\n",
+        "*   len()\n",
+        "\n",
+        "Дано:\n",
+        "\n",
+        "```\n",
+        "Страдание и боль всегда обязательны для широкого сознания и глубокого сердца.\n",
+        "\n",
+        "```\n",
+        "\n",
+        "Вывод:\n",
+        "```\n",
+        "Самое длинное слово с номером 5: обязательны\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "hZW0NZ7SgTcp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "initial_str = input('Введите строку: ')\n",
+        "\n",
+        "initial_list = initial_str.split()\n",
+        "max_len = 0\n",
+        "max_word = ''\n",
+        "index_word = 0\n",
+        "len_initial = 0\n",
+        "\n",
+        "\n",
+        "for i in initial_list:\n",
+        "    len_initial += 1\n",
+        "\n",
+        "\n",
+        "for i in range(len_initial):\n",
+        "    leng = 0\n",
+        "    for k in initial_list[i]:\n",
+        "        leng += 1\n",
+        "    if leng > max_len:\n",
+        "        max_len = leng\n",
+        "        max_word = initial_list[i]\n",
+        "        index_word = i + 1\n",
+        "\n",
+        "\n",
+        "ans = f'Самое длинное слово с номером {index_word}: {max_word}'\n",
+        "print(ans)"
+      ],
+      "metadata": {
+        "id": "rC5DpHHLsDYp",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "ba021a97-518c-40b9-e1b4-cf4ee5ddc65c"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Введите строку: Страдание и боль всегда обязательны для широкого сознания и глубокого сердца.\n",
+            "Самое длинное слово с номером 5: обязательны\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 6\n",
+        "\n",
+        "Напишите программу, для управления оценками студентов, со следующими функциями:\n",
+        "\n",
+        "* Добавление информации о студенте и его оценках.\n",
+        "* Подсчет среднего балла студента.\n",
+        "* Получение списка всех студентов с их средними баллами.\n",
+        "* Поиск студента по имени и вывод его оценок и среднего балла.\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "k5BzJW5ZeaQN"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "cvhlltVbdyoL"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 7\n",
+        "\n",
+        "\n",
+        "**Задача:**\n",
+        "\n",
+        "Создайте приложение-викторину с командной строкой, которое задает пользователям вопросы по различным темам и отслеживает их результаты.\n",
+        "\n",
+        "Ключевые особенности:\n",
+        "\n",
+        "*   Хранение данных о вопросах и ответах на них, а также баллов за каждый вопрос\n",
+        "*   Реализуйте функцию для представления вопросов, принятия ответов пользователей и предоставления обратной связи о том, являются ли ответы правильными или неправильными.\n",
+        "*  После завершения викторины отобразите общий балл пользователя из числа ответов на вопросы.\n",
+        "*  Реализуйте функцию добавления нового вопроса\n",
+        "*  Реализуйте функцию перемешивания вопросов, для отображения случайного вопроса\n"
+      ],
+      "metadata": {
+        "id": "iQ8Z-7PYgu1_"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "DhxyYwHwh2V4"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
