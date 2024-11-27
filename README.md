@@ -3,14 +3,6 @@
   <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/> 
 </div> 
 <div id="badges"> 
-  <a href="https://t.me/Daritoses"> 
-    <img src="https://img.shields.io/badge/Телеграмм-blue?style=for-the-badge&logo=telegram&logoColor=white" alt="telegram Badge"/> 
-  </a> 
-  <a href="https://vk.com/daritoses"> 
-    <img src="https://img.shields.io/badge/Вконтакте-blue?style=for-the-badge&logo=vk&logoColor=white" alt="Vk Badge"/> 
-  </a> 
-</div> 
-<div> 
   Привет, меня зовут Данил.
   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/> 
 </div> 
