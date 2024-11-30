@@ -1,29 +1,13 @@
-<h1 align="center"> 
-<div id="header" align="center"> 
-  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/> 
-</div> 
-<div id="badges"> 
-  Привет, меня зовут Данил.
-  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/> 
-</div> 
-</h1> 
-   
-<h3> 
-  :man_technologist: Обо мне: 
-</h3> 
-<d> 
-   
-- :telescope: Я студент Уральского федерального университета имени первого президента России Б. Н. Ельцина, учусь на первом курсе на направлении "Алгоритмы искусственного интеллекта". 
-</d> 
- 
-### :hammer_and_wrench: Инструменты: 
-<div> 
-  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Pythin" alt="Python" width="60" height="60"/>&nbsp; 
-</div> 
- 
-<h3> 
-  Небольшое предисловие
-</h3> 
-  <d> 
-    В данном репозитории будут собраны все практики по программированию на Python. 
-  </d>
+Выполненые практики от студента Данила Кабанова из УрФУ.
+
+Это репозиторий с решенными задачами из Google Colabs.
+
+- [X] [Практика 1.0.0]()
+- [X] [Практика 0.9.0]()
+- [X] [Пратика 0.8.0]()
+- [X] [Пратика 0.7.0]()
+- [X] [Пратика 0.6.0]()
+- [X] [Пратика 0.5.0]()
+- [X] [Пратика 0.4.0]()
+- [X] [Пратика 0.3.0]()
+- [X] [Пратика 0.2.0]()
