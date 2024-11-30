@@ -1,0 +1,514 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Danil-Kabanov/Google-colabs/blob/main/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0%201.1.0\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**ФИО:**"
+      ],
+      "metadata": {
+        "id": "GEsFKJm-ABFp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "wZMLYG_G_-19"
+      },
+      "outputs": [],
+      "source": [
+        "Кабанов Данил Алексеевич"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 1"
+      ],
+      "metadata": {
+        "id": "H4DrYnJjADuZ"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Описание:** Создайте иерархию классов для разных типов сотрудников в компании. Реализуйте родительский класс Employee и дочерние классы Manager и Developer. Каждый класс должен иметь метод для расчета зарплаты на основе различных критериев класса.\n",
+        "\n",
+        "\n",
+        "Отрабатываемый принцип: Наследование\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "C17FWep-AF4a"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Employee:\n",
+        "    def __init__(self, first_name, second_name, job):\n",
+        "        self.first_name = first_name\n",
+        "        self.second_name = second_name\n",
+        "        self.job = job\n",
+        "\n",
+        "\n",
+        "class Manager(Employee):\n",
+        "    salary_hour = 10000\n",
+        "\n",
+        "    def __init__(self, first_name, second_name, job):\n",
+        "        super().__init__(first_name, second_name, job)\n",
+        "        self.salary_job = self.salary_hour\n",
+        "\n",
+        "    def get_salary(self):\n",
+        "        return f'Заработная плата менеджера: {self.salary_job} рублей.'\n",
+        "\n",
+        "\n",
+        "class Developer(Employee):\n",
+        "    salary_hour = 7500\n",
+        "\n",
+        "    def __init__(self, first_name, second_name, job):\n",
+        "        super().__init__(first_name, second_name, job)\n",
+        "        self.salary_job = self.salary_hour\n",
+        "\n",
+        "    def get_salary(self):\n",
+        "        return f'Заработная плата разработчика: {self.salary_job} рублей.'\n",
+        "\n",
+        "\n",
+        "people1 = Developer('Oleg', 'Olegov', 'Developer')\n",
+        "people2 = Manager('Ivan', 'Ivanov', 'Manager')\n",
+        "print(people1.get_salary())\n",
+        "print(people2.get_salary())"
+      ],
+      "metadata": {
+        "id": "aexGXzqCAFH7",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "fa53ecb6-01a5-4502-9046-7b0df7720b41"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Заработная плата разработчика: 7500 рублей.\n",
+            "Заработная плата менеджера: 10000 рублей.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 2"
+      ],
+      "metadata": {
+        "id": "ERAi0TG5BI6v"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Описание:** Создайте иерархию классов для различных типов транспортных средств (Необходим один родительский класс и 3 дочерних). Реализуйте метод, который позволяет каждому транспортному средству возвращать собственное описание (Метод в каждом классе должен иметь одинаковое название). Продемонстрируйте вызов данного метода для каждого транспортного средства.\n",
+        "\n",
+        "\n",
+        "Отрабатываемый принцип: Полиморфизм"
+      ],
+      "metadata": {
+        "id": "sJ3k7ZcgBK87"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Transport:\n",
+        "    def __init__(self, all_name, color):\n",
+        "        self.all_name = all_name\n",
+        "        self.color = color\n",
+        "\n",
+        "\n",
+        "class Tram(Transport):\n",
+        "    def info(self):\n",
+        "        print('Тип транспорта: Трамвай')\n",
+        "        print('Всего сидений: 23')\n",
+        "        print('Всего мест в транспорте: 43\\n')\n",
+        "\n",
+        "\n",
+        "class Bus(Transport):\n",
+        "    def info(self):\n",
+        "        print('Тип транспорта: Автобус')\n",
+        "        print('Всего сидений: 29')\n",
+        "        print('Всего мест в транспорте: 45\\n')\n",
+        "\n",
+        "\n",
+        "class Trolleybus(Transport):\n",
+        "    def info(self):\n",
+        "        print('Тип транспорта: Троллейбус')\n",
+        "        print('Всего сидений: 32')\n",
+        "        print('Всего мест в транспорте: 50')\n",
+        "\n",
+        "\n",
+        "transp = Tram('Общественный транспорт', 'Красный')\n",
+        "transp2 = Bus('Общественный транспорт', 'Зеленый')\n",
+        "transp3 = Trolleybus('Общественный транспорт', 'Синий')\n",
+        "\n",
+        "transp.info()\n",
+        "\n",
+        "transp2.info()\n",
+        "\n",
+        "transp3.info()"
+      ],
+      "metadata": {
+        "id": "WOFOZQmDBKf4",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "37ab4a4a-b687-459f-ad4f-5ff2f90de5df"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Тип транспорта: Трамвай\n",
+            "Всего сидений: 23\n",
+            "Всего мест в транспорте: 43\n",
+            "\n",
+            "Тип транспорта: Автобус\n",
+            "Всего сидений: 29\n",
+            "Всего мест в транспорте: 45\n",
+            "\n",
+            "Тип транспорта: Троллейбус\n",
+            "Всего сидений: 32\n",
+            "Всего мест в транспорте: 50\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 3"
+      ],
+      "metadata": {
+        "id": "7E_SJXMJBvD4"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Онлайн-магазин:\n",
+        "- Создайте модель для онлайн-магазина с классами Product, Order, Customer, и ShoppingCart.\n",
+        "- Product включает информацию о цене, наличии на складе и категории товара.\n",
+        "Order обрабатывает процесс покупки, включая расчет цены с учетом скидок и налогов.\n",
+        "- Customer управляет информацией о пользователе и его истории заказов.\n",
+        "- ShoppingCart позволяет добавлять, удалять и обновлять количество товаров перед оформлением заказа.\n"
+      ],
+      "metadata": {
+        "id": "dd1mwKj_BxHa"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Product:\n",
+        "    price_fish = 100\n",
+        "    price_meat = 150\n",
+        "\n",
+        "    def __init__(self, category):\n",
+        "        self.category = category\n",
+        "        self.meat = self.price_meat\n",
+        "        self.fish = self.price_fish\n",
+        "\n",
+        "    def availability(self):\n",
+        "        if self.category == 'Мясо':\n",
+        "            print(f'Стоимость: {self.meat} руб.')\n",
+        "        elif self.category == 'Рыба':\n",
+        "            print(f'Стоимость: {self.fish} руб.')\n",
+        "        else:\n",
+        "            print('Такого товара нет!')\n",
+        "\n",
+        "\n",
+        "class Order:\n",
+        "\n",
+        "\n",
+        "\n",
+        "purchase = Product(\"Мясо\")\n",
+        "purchase.availability()\n",
+        "purchase2 = Product(\"Рыба\")\n",
+        "purchase2.availability()"
+      ],
+      "metadata": {
+        "id": "wkCcv_K-Bwdv",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "f2bf248b-b4e1-4ad2-a168-620c7c9218c3"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Стоимость: 150 руб.\n",
+            "Стоимость: 100 руб.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Задание 4"
+      ],
+      "metadata": {
+        "id": "ih7iPlYfB7lL"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Симулятор космического корабля:\n",
+        "- Создайте симулятор управления космическим кораблем с классами SpaceShip, CrewMember, и Mission.\n",
+        "- SpaceShip имеет атрибуты для управления топливом, состоянием корпуса, и текущей скоростью.\n",
+        "- CrewMember контролирует здоровье, навыки, и роли в команде (например, пилот, инженер).\n",
+        "- Mission определяет цели, ресурсы, и возможные события (например, аварии, встречи с астероидами)."
+      ],
+      "metadata": {
+        "id": "zLwqVCbpCBvc"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from random import randint\n",
+        "\n",
+        "\n",
+        "class SpaceShip:\n",
+        "    def __init__(self, fuel, corps, speed):\n",
+        "        self.fuel = fuel\n",
+        "        self.corps = corps\n",
+        "        self.speed = speed\n",
+        "\n",
+        "    def get_fuel(self, fuel_amount):\n",
+        "        self.fuel += fuel_amount\n",
+        "        print(f'Корабль заправлен. Топливо: {self.fuel}')\n",
+        "\n",
+        "    def get_state(self, amount):\n",
+        "        self.corps += amount\n",
+        "        print(f'Корабль отремонтирован. Состояние корпуса: {self.corps}')\n",
+        "\n",
+        "    def get_speed(self, new_speed):\n",
+        "        self.speed = new_speed\n",
+        "        print(f'Скорость изменена. Текущая скорость: {self.speed}')\n",
+        "\n",
+        "\n",
+        "class CrewMember:\n",
+        "    def __init__(self, health, skill, role):\n",
+        "        self.health = health\n",
+        "        self.skill = skill\n",
+        "        self.role = role\n",
+        "\n",
+        "    def heal(self, amount):\n",
+        "        self.health += amount\n",
+        "        print(f'Член экипажа излечен. Здоровье: {self.health}')\n",
+        "\n",
+        "    def use_skill(self):\n",
+        "        print(f'{self.role} использует навык: {self.skill}')\n",
+        "\n",
+        "\n",
+        "class Mission:\n",
+        "    def __init__(self, goals):\n",
+        "        self.goals = goals\n",
+        "        self.events = []\n",
+        "\n",
+        "    def execute_goals(self):\n",
+        "        print('Действия:')\n",
+        "        for goal in self.goals:\n",
+        "            print(f' - {goal}')\n",
+        "\n",
+        "\n",
+        "spaceship = SpaceShip(100, 80, 0)\n",
+        "\n",
+        "pilot = CrewMember(100, 'пилотирование', 'Пилот')\n",
+        "engineer = CrewMember(80, 'ремонт', 'Инженер')\n",
+        "\n",
+        "mission = Mission(['Исследовать планету', 'Увеличить скорость', 'Заправиться',\\\n",
+        "                   'Починить корабль', 'Узнать статистику корабля',\\\n",
+        "                   'Узнать об экипаже', 'Вылечить члена экипажа', 'Закончить'])\n",
+        "\n",
+        "\n",
+        "while True:\n",
+        "    mission.execute_goals()\n",
+        "\n",
+        "    act = input('Введите ваше действие: ')\n",
+        "\n",
+        "    if act == 'Исследовать планету':\n",
+        "        if spaceship.speed == 0:\n",
+        "            print('Сначала запустите двигатели!')\n",
+        "        else:\n",
+        "            print('Вы летите на новую планету, которую хотите изучить.')\n",
+        "            print('А также собрали образцы c этой планеты.')\n",
+        "    elif act == 'Заправиться':\n",
+        "        gas = int(input('Введите, насколько вы хотите заправиться: '))\n",
+        "        spaceship.get_fuel(gas)\n",
+        "    elif act == 'Починить корабль':\n",
+        "        engineer.use_skill()\n",
+        "        repair = randint(10, 50)\n",
+        "        spaceship.get_state(repair)\n",
+        "    elif act == 'Увеличить скорость':\n",
+        "        speed = int(input('Выберите скорость: '))\n",
+        "        spaceship.get_speed(speed)\n",
+        "    elif act == 'Узнать статистику корабля':\n",
+        "        print(f'Топливо: {spaceship.fuel}.')\n",
+        "        print(f'Состояние корабля: {spaceship.corps}.')\n",
+        "        print(f'Скорость: {spaceship.speed}.')\n",
+        "    elif act == 'Узнать об экипаже':\n",
+        "        print(f'Здоровье: {pilot.health}.')\n",
+        "        print(f'Навык: {pilot.skill}.')\n",
+        "        print(f'Роль: {pilot.role}.')\n",
+        "        print('=====================')\n",
+        "        print(f'Здоровье: {engineer.health}.')\n",
+        "        print(f'Навык: {engineer.skill}.')\n",
+        "        print(f'Роль: {engineer.role}.')\n",
+        "    elif act == 'Вылечить члена экипажа':\n",
+        "        healing = randint(20, 45)\n",
+        "        crew = input('Кого вылечите? ')\n",
+        "        if crew == 'pilot':\n",
+        "            pilot.heal(healing)\n",
+        "        elif crew == 'engineer':\n",
+        "            engineer.heal(healing)\n",
+        "    elif act == 'Закончить':\n",
+        "        print('Хорошего дня!')\n",
+        "        break\n",
+        "    else:\n",
+        "        print('Ошибка!')\n",
+        "        break"
+      ],
+      "metadata": {
+        "id": "4NyrOOy8B9ED",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "cd701be7-20a7-4f7b-922d-93eabcd9cca1"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Действия:\n",
+            " - Исследовать планету\n",
+            " - Увеличить скорость\n",
+            " - Заправиться\n",
+            " - Починить корабль\n",
+            " - Узнать статистику корабля\n",
+            " - Узнать об экипаже\n",
+            " - Вылечить члена экипажа\n",
+            " - Закончить\n",
+            "Введите ваше действие: Увеличить скорость\n",
+            "Выберите скорость: 120\n",
+            "Скорость изменена. Текущая скорость: 120\n",
+            "Действия:\n",
+            " - Исследовать планету\n",
+            " - Увеличить скорость\n",
+            " - Заправиться\n",
+            " - Починить корабль\n",
+            " - Узнать статистику корабля\n",
+            " - Узнать об экипаже\n",
+            " - Вылечить члена экипажа\n",
+            " - Закончить\n",
+            "Введите ваше действие: Узнать статистику корабля\n",
+            "Топливо: 100.\n",
+            "Состояние корабля: 80.\n",
+            "Скорость: 120.\n",
+            "Действия:\n",
+            " - Исследовать планету\n",
+            " - Увеличить скорость\n",
+            " - Заправиться\n",
+            " - Починить корабль\n",
+            " - Узнать статистику корабля\n",
+            " - Узнать об экипаже\n",
+            " - Вылечить члена экипажа\n",
+            " - Закончить\n",
+            "Введите ваше действие: Узнать об экипаже\n",
+            "Здоровье: 100.\n",
+            "Навык: пилотирование.\n",
+            "Роль: Пилот.\n",
+            "=====================\n",
+            "Здоровье: 80.\n",
+            "Навык: ремонт.\n",
+            "Роль: Инженер.\n",
+            "Действия:\n",
+            " - Исследовать планету\n",
+            " - Увеличить скорость\n",
+            " - Заправиться\n",
+            " - Починить корабль\n",
+            " - Узнать статистику корабля\n",
+            " - Узнать об экипаже\n",
+            " - Вылечить члена экипажа\n",
+            " - Закончить\n",
+            "Введите ваше действие: Закончить\n",
+            "Хорошего дня!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Дополнительно:"
+      ],
+      "metadata": {
+        "id": "F7mRVsZjCXk0"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Описание:** создайте консольную версию игры крестики-нолики, используя классы"
+      ],
+      "metadata": {
+        "id": "X4Lkf86UCc1h"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "x9OxpNsyCcUo"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
